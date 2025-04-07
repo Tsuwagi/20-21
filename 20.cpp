@@ -18,31 +18,39 @@ void Sort(double a[], int c) {
 }
 
 int main() {
-    int n = 0, i;
-    
-    cout << "Введіть кількість елементів n=";
+    int n;
+    cout << "Введіть кількість елементів n = ";
     cin >> n;
-
-    double* a = new double[n]; 
-
-    cout << "Введіть " << n << " чисел:\n"; 
-
+    
+    double* b = new double[n];
+    
     int c = 0; 
 
-    for (i = 0; i < n; i++) {    
-        cin >> a[i];
-        if (a[i] < 0) {  
+    cout << "Введіть " << n << " чисел:\n";
+
+    for (int i = 0; i < n; i++) {
+        double x;
+        cin >> x;
+        if (x < 0) {
             break;
         }
-        c++;  
+        b[c++] = x;
     }
 
-    Sort(a, c); 
+    double* a = new double[c];
+    for (int i = 0; i < c; i++) {
+        a[i] = b[i];
+    }
+
+    delete[] b; 
+
+    Sort(a, c);
 
     cout << "\nМасив після сортування:\n";
-    for (i = 0; i < c; i++)  
+    for (int i = 0; i < c; i++) {
         cout << a[i] << "\t";
+    }
 
-    delete[] a; 
+    delete[] a;
     return 0;
 }
